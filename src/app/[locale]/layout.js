@@ -9,7 +9,7 @@ export function generateStaticParams() {
 }
 
 export const metadata = {
-  title: "Direct Bookingz — Your Ultimate Booking Platform",
+  title: "Direct Bookingz — The Ultimate Vacation Rental Direct Booking Platform",
   description:
     "Direct Bookingz provides seamless direct booking solutions for your travel, accommodation, and more. Book directly with trusted providers and save money.",
   keywords: "booking, direct booking, travel, accommodation, reservations, best deals",
