@@ -9,7 +9,7 @@ const Preload = () => {
     const paragraphsRef = useRef([])
     const tlRef = useRef()
 
-    const texts = ['more bookings', 'less commission', 'zero bs']
+    const texts = ['more bookings', 'less commissions', 'zero bs']
 
     useEffect(() => {
         const ctx = gsap.context(() => {
