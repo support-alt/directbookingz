@@ -6,6 +6,7 @@ import en from './locales/en/common.json';
 import es from './locales/es/common.json';
 import de from './locales/de/common.json';
 import it from './locales/it/common.json';
+import fr from './locales/fr/common.json';
 
 i18n
     .use(LanguageDetector)
@@ -16,6 +17,7 @@ i18n
             es: { common: es },
             de: { common: de },
             it: { common: it },
+            fr: { common: fr },
         },
         fallbackLng: 'en',
         ns: ['common'],

@@ -1,0 +1,73 @@
+{
+    "header": {
+        "showMenu": "AFFICHER LE MENU",
+        "hideMenu": "MASQUER LE MENU",
+        "menus": [
+            "Accueil",
+            "Calculateur de prix",
+            "À propos de nous",
+            "Travaux sélectionnés",
+            "Contact"
+        ]
+    },
+    "hero": {
+        "main": "Arrêtez de payer des frais. Commencez à posséder vos réservations.<brTag /> <hoverOne>CONCEPTION ET IMAGE DE MARQUE</hoverOne>, <hoverTwo>PUBLICITÉ</hoverTwo>, <hoverThree>DÉVELOPPEMENT WEB</hoverThree> et redonnez<brTag /> le pouvoir aux hôtes et aux gestionnaires de biens.",
+        "small": "LOCATIONS DIRECTES"
+    },
+    "cards": {
+        "first": {
+            "heading": "Dépendance aux OTA ?",
+            "range1": "Nombre d’annonces",
+            "range2": "Tarif journalier moyen",
+            "range3": "Taux d’occupation",
+            "range4": "Taux de réservations OTA",
+            "priceProf": "En bénéfices chaque année",
+            "subHeading1": "Votre taux d’occupation est {{occupancySts}} la moyenne du secteur",
+            "para1": "En augmentant votre taux d’occupation de seulement 20 % par an avec Direct Bookingz, vous générerez <spanBlue>${{extraRevenue}} de revenus supplémentaires</spanBlue>.",
+            "subHeading2": "Vos réservations OTA sont {{otaSts}} la moyenne du secteur",
+            "para2": "En augmentant vos réservations directes de seulement 10 % par an, vous pourriez économiser <spanBlue>${{saveOta}} de frais OTA</spanBlue>.",
+            "below": "en dessous",
+            "above": "au-dessus"
+        },
+        "second": {
+            "heading": "L’ÉQUIPE DIRECT BOOKINGZ EST DANS LE DOMAINE DEPUIS 5 ANS D’AFFILÉE",
+            "tickers": [
+                "VILLAS",
+                "CABANES",
+                "COTTAGES",
+                "APPARTEMENTS & CONDOS",
+                "MAISONS DE PLAGE",
+                "CABANES DANS LES ARBRES",
+                "PÉNICHE",
+                "MANOIRS",
+                "CHALETS",
+                "AUBERGES",
+                "APPARTEMENTS PARTAGÉS"
+            ]
+        },
+        "third": {
+            "heading": "NOTRE TRAVAIL NE SE LIMITE PAS AUX BEAUX SITES WEB, VISUELS CRÉATIFS ET DESIGN ANIMÉ"
+        },
+        "fifth": {
+            "heading": "INTÉRESSÉ PAR LA CONSULTATION DE TOUS NOS SERVICES ?",
+            "openPdfText": "OUVRIR LA VERSION COMPLÈTE EN PDF"
+        }
+    },
+    "portfolio": {
+        "subHeading": "LE MEILLEUR DE",
+        "heading": "NOS TRAVAUX"
+    },
+    "contact": {
+        "subHeading": "Restons en contact !",
+        "heading": "Vous avez une question ou voulez simplement dire bonjour ?",
+        "inputs": {
+            "name": "Votre nom",
+            "email": "Votre adresse e-mail",
+            "phone": "Votre numéro de téléphone",
+            "service": "Choisir un service",
+            "message": "Votre message..."
+        },
+        "submit": "Envoyer",
+        "submitting": "Envoi en cours..."
+    }
+}
