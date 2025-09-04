@@ -32,7 +32,9 @@ export default function Home() {
     return true;
   });
   const [loaded, setLoaded] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : null
+  );
 
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [videoLoaded2, setVideoLoaded2] = useState(false)

@@ -28,10 +28,14 @@ export const metadata = {
     description:
       "Direct Bookingz provides seamless direct booking solutions for your travel, accommodation, and more. Book directly with trusted providers and save money.",
   },
-  viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: "/favicon.ico",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default async function RootLayout({ children, params }) {
