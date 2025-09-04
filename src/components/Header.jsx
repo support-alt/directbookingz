@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { useTranslation } from 'react-i18next'
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
@@ -160,6 +161,13 @@ const Header = () => {
         }, 300);
     }
 
+    const handleGotoWorks = () => {
+        gsap.to(window, {
+            scrollTo: "#portfolio",
+            duration: 1,
+        });
+    }
+
 
 
 
@@ -169,6 +177,23 @@ const Header = () => {
                 <header className='w-full px-6 py-2 flex items-center justify-between fixed top-0 left-0 z-50 max-[450px]:px-3' style={{ mixBlendMode: "difference" }}>
                     <img src="/images/logo-black.png" alt="" className='h-20 max-[700px]:h-14 invert' />
                     <div className="flex items-center justify-center gap-6 max-[500px]:gap-3">
+                        <div
+                            className="flex items-center justify-center gap-6 duration-300 max-[500px]:gap-3 max-[450px]:absolute max-[450px]:top-16 max-[450px]:right-5"
+                            style={{ opacity: screenWidth > 450 ? 1 : (showBg ? 0 : 1) }}
+                        >
+                            <Link
+                                href={'/our-services-pdf'}
+                                className='text-white max-[600px]:text-sm max-[550px]:text-xs max-[450px]:text-sm'
+                            >
+                                Services
+                            </Link>
+                            <button
+                                onClick={handleGotoWorks}
+                                className="text-white max-[600px]:text-sm max-[550px]:text-xs max-[450px]:text-sm"
+                            >
+                                Our Works
+                            </button>
+                        </div>
                         <div ref={dropdownRef} className='w-fit'>
                             <LanguageSwitcher languages={languages} isOpen={isOpen} setIsOpen={setIsOpen} selected={selected} switchLocale={switchLocale} />
                         </div>
@@ -184,7 +209,7 @@ const Header = () => {
                 </header>
                 {/* lang switch */}
                 {isOpen && (
-                    <ul className="w-[120px] fixed top-[63px] right-[166px] mt-2 rounded-lg border border-gray-500 bg-white text-black overflow-hidden z-[55]">
+                    <ul className="w-[120px] fixed top-[63px] right-[166px] mt-2 rounded-lg border border-gray-500 bg-white text-black overflow-hidden z-[55] max-[700px]:w-[100px] max-[700px]:top-12 max-[500px]:right-[130px] max-[450px]:right-[120px]">
                         {languages.map(({ label }, idx) => (
                             <li
                                 key={idx}
@@ -198,7 +223,7 @@ const Header = () => {
                     </ul>
                 )}
                 {/* lang switch ends */}
-                <div className="fixed top-[25px] right-[17px] bg-[#FFD73B] rounded-lg duration-500 z-[45] max-[700px]:top-[20px]" style={{ width: showBg ? (typeof window !== 'undefined' && screenWidth > 500 ? "380px" : "285px") : (typeof window !== 'undefined' && screenWidth > 500 ? "132px" : "108px"), height: showBg ? (typeof window !== 'undefined' && screenWidth > 700 ? "430px" : "385px") : (typeof window !== 'undefined' && screenWidth > 500 ? "42px" : "35px"), opacity: btnHovered || showBg ? 1 : 0 }} />
+                <div className="fixed top-[25px] right-[17px] bg-[#FFD73B] rounded-lg duration-500 z-[45] max-[700px]:top-[20px] max-[450px]:right-[13px]" style={{ width: showBg ? (typeof window !== 'undefined' && screenWidth > 500 ? "380px" : "285px") : (typeof window !== 'undefined' && screenWidth > 500 ? "132px" : typeof window !== 'undefined' && screenWidth > 450 ? "108px" : "95px"), height: showBg ? (typeof window !== 'undefined' && screenWidth > 700 ? "430px" : "385px") : (typeof window !== 'undefined' && screenWidth > 500 ? "42px" : "35px"), opacity: btnHovered || showBg ? 1 : 0 }} />
                 <div className="w-[355px] h-[480px] fixed top-20 right-[23px] pr-4 duration-300 max-[500px]:w-[250px] max-[500px]:h-[340px] z-[46]" style={{ opacity: isMenuActive ? 1 : 0, pointerEvents: isMenuActive ? "auto" : "none" }}>
                     <ul className='border-b-[1px] border-b-[#E5C135] pb-5 mb-6'>
                         <li className='menuButton w-fit text-[2.15em] font-medium text-start cursor-pointer -tracking-[2px] leading-[1.4] relative duration-150 delay-[0ms] max-[700px]:text-[1.8em] max-[500px]:text-[1.5em]' style={{ top: isMenuActive ? "0px" : "-10px", opacity: isMenuActive ? 1 : 0, transitionDelay: isMenuActive ? "0ms" : "120ms" }} data-hover={t('header.menus', { returnObjects: true })[0]}>

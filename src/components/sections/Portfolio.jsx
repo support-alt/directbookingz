@@ -70,7 +70,7 @@ const Portfolio = () => {
     "images/cards/card-3",
     "images/cards/card-2",
     "images/cards/card-1",
-    "images/cards/card-4-2",
+    "images/cards/card-4",
   ];
 
   useEffect(() => {
@@ -304,7 +304,7 @@ const Portfolio = () => {
 
           if (imageContainer && imageBases[index] && !imageContainer.querySelector('img')) {
             const img = document.createElement('img');
-            img.src = `${imageBases[index]}.png`;
+            img.src = `${imageBases[index]}.avif`;
             img.style.position = 'absolute';
             img.style.top = '0';
             img.style.left = '0';

@@ -25,8 +25,14 @@ const videoUrl = [
 ]
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [loaded, setLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 500) {
+      return false;
+    }
+    return true;
+  });
+  const [loaded, setLoaded] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [videoLoaded2, setVideoLoaded2] = useState(false)
@@ -35,11 +41,22 @@ export default function Home() {
   const { t } = useTranslation("common");
 
   useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener("resize", handleResize)
+
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+
+  useEffect(() => {
+    if (!isLoading) return;
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 9000);
+
     return () => clearTimeout(timer);
-  }, []);
+  }, [isLoading]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -58,6 +75,8 @@ export default function Home() {
   const videoRef3 = useRef(null);
 
   const handleMouseEnter = (id) => {
+    if (windowWidth < 500) return
+
     setTimeout(() => {
       if (id === 1) {
         setVideoLoaded(true)
@@ -82,6 +101,8 @@ export default function Home() {
   };
 
   const handleMouseLeave = (id) => {
+    if (windowWidth < 500) return
+
     setTimeout(() => {
       if (id === 1) {
         setVideoLoaded(false)
@@ -103,9 +124,9 @@ export default function Home() {
   };
 
 
-  if (isLoading) {
-    return <Preload />;
-  }
+  // if (isLoading) {
+  //   return <Preload />;
+  // }
 
 
 
@@ -135,7 +156,7 @@ export default function Home() {
                             after:w-[calc(100%+40px)] after:h-[calc(100%+30px)] after:rounded-lg after:bg-yellow-300 after:absolute
                             after:content-[''] after:top-1/2 after:left-1/2 after:-translate-y-1/2 after:-translate-x-1/2 after:-z-[1]
                             after:opacity-0 after:delay-200 after:duration-300 after:scale-75 hover:after:opacity-100 hover:after:scale-100
-                            max-[900px]:before:h-[3px]`}
+                            max-[900px]:before:h-[3px] max-[500px]:after:content-none max-[500px]:before:content-none`}
                   />,
                   hoverTwo: <span
                     onMouseEnter={() => handleMouseEnter(2)}
@@ -146,7 +167,7 @@ export default function Home() {
                             after:w-[calc(100%+40px)] after:h-[calc(100%+30px)] after:rounded-lg after:bg-orange-500 after:absolute
                             after:content-[''] after:top-1/2 after:left-1/2 after:-translate-y-1/2 after:-translate-x-1/2 after:-z-[1]
                             after:opacity-0 after:delay-200 after:duration-300 after:scale-75 hover:after:opacity-100 hover:after:scale-100
-                            max-[900px]:before:h-[3px]`}
+                            max-[900px]:before:h-[3px] max-[500px]:after:content-none max-[500px]:before:content-none`}
                   />,
                   hoverThree: <span
                     onMouseEnter={() => handleMouseEnter(3)}
@@ -157,7 +178,7 @@ export default function Home() {
                             after:w-[calc(100%+40px)] after:h-[calc(100%+30px)] after:rounded-lg after:bg-blue-500 after:absolute
                             after:content-[''] after:top-1/2 after:left-1/2 after:-translate-y-1/2 after:-translate-x-1/2 after:-z-[1]
                             after:opacity-0 after:delay-200 after:duration-300 after:scale-75 hover:after:opacity-100 hover:after:scale-100
-                            max-[900px]:before:h-[3px]`}
+                            max-[900px]:before:h-[3px] max-[500px]:after:content-none max-[500px]:before:content-none`}
                   />
                 }}
               />

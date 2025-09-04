@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 
 const page = () => {
-  const pdfPath = "/pdfs/Case-study-pdfs/nycholidayrentals.pdf"
+  const pdfPath = "/pdfs/Case-study-pdfs/nycholidayrentals_new.pdf"
   
   useEffect(() => {
     const style = document.createElement('style')
