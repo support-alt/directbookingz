@@ -31,7 +31,7 @@ export default function Home() {
     }
     return true;
   });
-  const [loaded, setLoaded] = useState(true);
+  const [loaded, setLoaded] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const [videoLoaded, setVideoLoaded] = useState(false)
@@ -124,9 +124,9 @@ export default function Home() {
   };
 
 
-  // if (isLoading) {
-  //   return <Preload />;
-  // }
+  if (isLoading) {
+    return <Preload />;
+  }
 
 
 
