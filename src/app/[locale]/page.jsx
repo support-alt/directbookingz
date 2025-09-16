@@ -135,7 +135,7 @@ export default function Home() {
   return (
     <div
       className={`
-        font-[family-name:var(--font-helvetica-now)]
+        font-helvetica
         transition-opacity transition-filter duration-[1500ms]
         ${loaded ? "opacity-100 blur-0" : "opacity-0 blur-lg"}
       `}

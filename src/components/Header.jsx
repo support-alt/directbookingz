@@ -182,14 +182,15 @@ const Header = () => {
                             style={{ opacity: screenWidth > 450 ? 1 : (showBg ? 0 : 1) }}
                         >
                             <Link
-                                href={'/our-services-pdf'}
+                                href={'/our-services'}
                                 className='text-white max-[600px]:text-sm max-[550px]:text-xs max-[450px]:text-sm'
+                                target='_blank'
                             >
                                 Services
                             </Link>
                             <button
                                 onClick={handleGotoWorks}
-                                className="text-white max-[600px]:text-sm max-[550px]:text-xs max-[450px]:text-sm"
+                                className="text-white cursor-pointer max-[600px]:text-sm max-[550px]:text-xs max-[450px]:text-sm"
                             >
                                 Our Works
                             </button>

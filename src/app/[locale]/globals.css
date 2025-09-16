@@ -34,6 +34,19 @@ body {
 }
 
 
+.font-bebas {
+  font-family: var(--font-bebas-neue);
+}
+
+.font-helvetica {
+  font-family: var(--font-helvetica-now);
+}
+
+.font-outfit {
+  font-family: var(--font-outfit);
+}
+
+
 
 
 
@@ -204,3 +217,21 @@ body {
 }
 
 /* big text effect ends */
+
+
+
+
+
+
+
+
+/* single line text limiter */
+.single-line {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* single line text limiter ends */

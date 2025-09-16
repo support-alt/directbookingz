@@ -1,4 +1,6 @@
 import { helveticaNow } from "@/fonts/helvetica-now";
+import { bebasNeue } from "@/fonts/bebas-neue";
+import { outfit } from "@/fonts/outfit";
 import "./globals.css";
 import LenisProvider from "@/components/lenis/LenisProvider";
 import nextI18nextConfig from "../../../next-i18next.config";
@@ -43,7 +45,7 @@ export default async function RootLayout({ children, params }) {
 
   return (
     <html lang={locale}>
-      <body className={`${helveticaNow.variable} antialiased`}>
+      <body className={`${helveticaNow.variable} ${bebasNeue.variable} ${outfit.variable} antialiased`}>
         <ClientLocaleProvider locale={locale}>
           <LenisProvider>{children}</LenisProvider>
         </ClientLocaleProvider>
