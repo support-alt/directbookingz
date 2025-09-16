@@ -10,6 +10,12 @@ import Portfolio from "@/components/sections/Portfolio";
 import Contact from "@/components/sections/Contact";
 import HeroFirstBgVideo from "@/components/HeroFirstBgVideo";
 import { Trans, useTranslation } from "react-i18next";
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 
 const videoUrl = [
@@ -126,6 +132,25 @@ export default function Home() {
   };
 
 
+  const portfolioRef = useRef();
+  const handleGotoWorks = () => {
+    gsap.to(window, {
+      scrollTo: "#portfolio",
+      duration: 1,
+      onStart: () => {
+        ScrollTrigger.refresh();
+      },
+      onComplete: () => {
+        console.log("scrolled to #portfolio -> calling revealFirst");
+        portfolioRef.current?.revealFirst?.();
+      }
+    });
+    setTimeout(() => {
+      window.open("/case-studies/nycholidayrentals", "_blank");
+    }, 1000);
+  };
+
+
   if (isLoading) {
     return <Preload />;
   }
@@ -140,7 +165,7 @@ export default function Home() {
         ${loaded ? "opacity-100 blur-0" : "opacity-0 blur-lg"}
       `}
     >
-      <Header />
+      <Header handleGotoWorks={handleGotoWorks} />
       <main>
         <section id="hero" className="grid grid-rows-[0.5fr_0.5fr_1fr] min-h-screen max-h-screen max-[650px]:grid-rows-[0.5fr_1.5fr] relative overflow-hidden">
           <div className="p-6 row-[2/3] max-[450px]:p-3">
@@ -198,7 +223,7 @@ export default function Home() {
 
         <PriceCalculator />
 
-        <Portfolio />
+        <Portfolio ref={portfolioRef} />
 
         <Contact />
       </main>

@@ -21,7 +21,7 @@ const languages = [
 ];
 
 
-const Header = () => {
+const Header = ({ handleGotoWorks }) => {
     const [showBg, setShowBg] = useState(false)
     const [isMenuActive, setIsMenuActive] = useState(false)
     const [btnHovered, setBtnHovered] = useState(false)
@@ -161,9 +161,25 @@ const Header = () => {
         }, 300);
     }
 
-    const handleGotoWorks = () => {
+    // const portfolioRef = useRef();
+
+    // const handleGotoWorks = () => {
+    //     gsap.to(window, {
+    //         scrollTo: "#portfolio",
+    //         duration: 1,
+    //         onStart: () => {
+    //             ScrollTrigger.refresh();
+    //         },
+    //         onComplete: () => {
+    //             console.log("scrolled to #portfolio -> calling revealFirst");
+    //             portfolioRef.current?.revealFirst?.();
+    //         }
+    //     });
+    // };
+
+    const handleGotoTop = () => {
         gsap.to(window, {
-            scrollTo: "#portfolio",
+            scrollTo: "#hero",
             duration: 1,
         });
     }
@@ -174,8 +190,8 @@ const Header = () => {
     return (
         <>
             <div>
-                <header className='w-full px-6 py-2 flex items-center justify-between fixed top-0 left-0 z-50 max-[450px]:px-3' style={{ mixBlendMode: "difference" }}>
-                    <img src="/images/logo-black.png" alt="" className='h-20 max-[700px]:h-14 invert' />
+                <header className='w-full px-6 py-2 flex items-center justify-between fixed top-0 left-0 z-50 max-[450px]:px-3 mix-blend-difference'>
+                    <img src="/images/logo-black.png" alt="" className='h-20 max-[700px]:h-14 invert cursor-pointer' onClick={handleGotoTop} />
                     <div className="flex items-center justify-center gap-6 max-[500px]:gap-3">
                         <div
                             className="flex items-center justify-center gap-6 duration-300 max-[500px]:gap-3 max-[450px]:absolute max-[450px]:top-16 max-[450px]:right-5"

@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Portfolio = () => {
+const Portfolio = forwardRef((props, ref) => {
 
   const sectionRef = useRef(null);
   const welcomeRef = useRef(null);
@@ -25,6 +25,51 @@ const Portfolio = () => {
   const currentIndexRef = useRef(0);
   const sequenceTLsRef = useRef([]);
   const scrollObserverRef = useRef(null);
+
+
+
+  // stable refs we will expose / call
+  const introTLRef = useRef(null);
+  const navigateCardsRef = useRef(null);
+  const setupCardsRef = useRef(null);
+
+  // ready/pending handling so revealFirst can be called early
+  const readyRef = useRef(false);
+  const pendingRevealRef = useRef(false);
+
+  // Expose API
+  useImperativeHandle(ref, () => ({
+    revealFirst: () => {
+      console.log("Portfolio.revealFirst called");
+      // if setup hasn't finished, queue it
+      if (!readyRef.current) {
+        pendingRevealRef.current = true;
+        return;
+      }
+
+      // If intro hasn't played, run it and then open first card
+      if (!pRef.current) {
+        setupCardsRef.current?.(); // ensure interactions are set up
+        const tl = introTLRef.current;
+        if (tl) {
+          // restart to ensure consistent state
+          tl.restart();
+          tl.play();
+          // after intro finished open first card
+          tl.eventCallback("onComplete", () => {
+            // use backward mode to set first card properly
+            navigateCardsRef.current?.(0, false);
+          });
+        } else {
+          // fallback: still ensure first card UI state
+          navigateCardsRef.current?.(0, false);
+        }
+      } else {
+        // already played — just ensure the first card is focused
+        navigateCardsRef.current?.(0, false);
+      }
+    }
+  }));
 
 
   const { t } = useTranslation()
@@ -72,6 +117,8 @@ const Portfolio = () => {
     "images/cards/card-1",
     "images/cards/card-4",
   ];
+
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -123,6 +170,9 @@ const Portfolio = () => {
           stagger: 0.1,
         }, "<")
         .set(welcomeRef.current, { autoAlpha: 0 });
+
+      introTLRef.current = introTL;
+
 
 
       function updateProjectInfo(index, direction) {
@@ -257,6 +307,10 @@ const Portfolio = () => {
         }
       }
 
+      navigateCardsRef.current = navigateCards;
+
+
+
 
       function setupCardInteractions() {
         cards.forEach((card, index) => {
@@ -371,6 +425,10 @@ const Portfolio = () => {
         });
       }
 
+      setupCardsRef.current = setupCardInteractions;
+
+
+
 
       let r = gsap.delayedCall(1, () => isAnimatingRef.current = true).pause()
 
@@ -432,6 +490,24 @@ const Portfolio = () => {
           }
         }
       });
+
+
+      readyRef.current = true;
+      if (pendingRevealRef.current) {
+        // clear pending flag and run reveal now:
+        pendingRevealRef.current = false;
+        // Use the same logic as the exposed method
+        if (!pRef.current) {
+          setupCardsRef.current?.();
+          introTLRef.current?.restart().play();
+          introTLRef.current?.eventCallback("onComplete", () => {
+            navigateCardsRef.current?.(0, false);
+          });
+        } else {
+          navigateCardsRef.current?.(0, false);
+        }
+      }
+
 
     }, sectionRef)
 
@@ -535,6 +611,6 @@ const Portfolio = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Portfolio;
