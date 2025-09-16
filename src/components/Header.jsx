@@ -199,14 +199,14 @@ const Header = ({ handleGotoWorks }) => {
                         >
                             <Link
                                 href={'/our-services'}
-                                className='text-white max-[600px]:text-sm max-[550px]:text-xs max-[450px]:text-sm'
+                                className='text-white text-xl max-[600px]:text-sm max-[550px]:text-xs max-[450px]:text-sm'
                                 target='_blank'
                             >
                                 Services
                             </Link>
                             <button
                                 onClick={handleGotoWorks}
-                                className="text-white cursor-pointer max-[600px]:text-sm max-[550px]:text-xs max-[450px]:text-sm"
+                                className="text-white text-xl cursor-pointer max-[600px]:text-sm max-[550px]:text-xs max-[450px]:text-sm"
                             >
                                 Our Works
                             </button>
