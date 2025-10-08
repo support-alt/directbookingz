@@ -295,8 +295,8 @@ const Header = ({ handleGotoWorks }) => {
                         </a>
                         <a href="tel:+16466318459" className='flex items-center group mb-2'>
                             <img src="/images/icons/right-up.png" alt="" className='w-5 mr-1 duration-300 rotate-0 group-hover:rotate-45' />
-                            <p data-hover='+1 646 631 8459' className='menuButton font-bold'>
-                                <span>+1 646 631 8459</span>
+                            <p data-hover='+1 226-532-9544' className='menuButton font-bold'>
+                                <span>+1 226-532-9544</span>
                             </p>
                         </a>
                     </div>
